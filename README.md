@@ -1,95 +1,107 @@
-# Cessão Check
+# PDF-Excel Reconciliation Tool
 
-Sistema automatizado de validação de termos de cessão, desenvolvido para comparar informações entre documentos PDF e planilhas Excel, identificando inconsistências em dados operacionais de forma rápida e estruturada.
-
----
-
-## Problemas que o projeto resolve:
-
-• Em processos de cessão com grande volume de clientes, a validação manual de termos é demorada e suscetível a erros.
-• Em alguns casos, inconsistências em operações só são identificadas semanas após a geração do termo, gerando risco operacional.
-• Este sistema foi desenvolvido para automatizar essa conferência e permitir validação no mesmo dia da geração do documento.
+Protótipo em Python desenvolvido para automatizar a validação entre documentos PDF e bases estruturadas (Excel), identificando inconsistências em operações de forma rápida e confiável.
 
 ---
 
-## Solução:
+## Contexto
 
-O sistema realiza automaticamente:
+Este projeto foi criado a partir de um problema real, onde inconsistências em documentos financeiros eram detectadas apenas semanas após sua geração, gerando risco operacional.
 
-- Extração de dados de arquivos PDF
-- Extração de CCBs (Cédulas de Crédito Bancário)
-- Leitura de planilhas Excel com base operacional
-- Comparação entre as duas fontes de dados
-- Geração de relatório final com divergências encontradas
+O objetivo é permitir a validação de grandes volumes de dados no mesmo dia, por meio da automação da comparação entre fontes.
+
+---
+
+## Problema
+
+- Validação manual de grandes volumes de dados é demorada e suscetível a erros  
+- Inconsistências podem passar despercebidas por longos períodos  
+- A detecção tardia aumenta o risco operacional  
+
+---
+
+## Solução
+
+O protótipo automatiza:
+
+- Extração de dados de arquivos PDF  
+- Extração de identificadores únicos (ex: IDs de contratos)  
+- Leitura de bases estruturadas em Excel  
+- Comparação entre as duas fontes  
+- Geração de relatório com divergências  
 
 ---
 
 ## Como funciona
 
-1. O usuário seleciona o arquivo PDF do termo de cessão
-2. Seleciona a planilha Excel com a base de operações
-3. O sistema extrai as CCBs de ambas as fontes
-4. Realiza a comparação entre os conjuntos de dados
+1. O usuário seleciona o arquivo PDF  
+2. Seleciona a planilha Excel  
+3. O sistema extrai os identificadores de ambas as fontes  
+4. Realiza a comparação dos dados  
 5. Gera um relatório em Excel com:
-   - CCBs presentes em ambas as fontes
-   - CCBs ausentes no PDF
-   - CCBs ausentes na planilha
+
+- Correspondências  
+- Registros ausentes no PDF  
+- Registros ausentes na base  
 
 ---
 
 ## Estrutura do projeto
 
 src/
-│
 ├── reader/
-│ └── reader.py # Seleção de arquivos via interface gráfica
-│
 ├── processor/
-│ └── validator.py # Extração e processamento de dados (regras de negócio)
-│
 ├── report/
-│ └── report_generator.py # Geração do relatório final em Excel
-│
-└── main.py # Orquestração do fluxo do sistema
+└── main.py
 
 
 ---
 
-## Tecnologias utilizadas
+## Tecnologias
 
-- Python
-- pdfplumber (extração de texto de PDFs)
-- pandas (manipulação de dados)
-- openpyxl (exportação para Excel)
-- tkinter (interface gráfica para seleção de arquivos)
+- Python  
+- pdfplumber  
+- pandas  
+- openpyxl  
+- tkinter  
 
 ---
 
-## ▶Como executar
-
-### 1. Instale as dependências:
+## Como executar
 
 pip install -r requirements.txt
-
-### 2. Execute o projeto:
-
 python main.py
-
 
 ## Saída gerada
 
 O sistema gera um arquivo Excel contendo:
 
-CCB analisada
+Identificador analisado
 Presença no PDF
-Presença na planilha
-Status da validação (OK ou divergência)
+Presença na base
+Status da validação
 
 
-## Objetivo
+## Impacto esperado
+Redução do tempo de validação de horas para minutos
+Possibilidade de validação no mesmo dia
+Redução de risco operacional
 
-Automatizar a conferência de termos de cessão, reduzindo esforço manual e aumentando a confiabilidade na validação de dados operacionais.
 
-## Observação
+## Melhorias futuras
+Integração com banco de dados
+Interface web
+Execução automatizada (pipeline)
 
-Este projeto foi desenvolvido com foco em automação de processos internos e validação de integridade de dados em operações financeiras.
+
+
+
+## Demonstração
+
+Exemplo de saída gerada pelo sistema:
+
+
+<img width="430" height="109" alt="f93bd620-dd53-4dc6-b36a-6c524bbdd8a1" src="https://github.com/user-attachments/assets/5a2a0446-71a9-4115-aa85-2453e183a0e6" />
+
+
+[adicione aqui um print do Excel]
