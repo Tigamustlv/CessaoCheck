@@ -34,6 +34,3 @@ def selecionar_pdf():
         raise ValueError("Nenhum arquivo PDF selecionado.")
     return arquivo
 
-
-selecionar_excel()
-selecionar_pdf()
